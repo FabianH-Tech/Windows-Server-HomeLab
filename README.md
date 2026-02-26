@@ -62,7 +62,7 @@ Documentation and configuration files for my Windows Server home lab running on 
 
     - Disabled VirtualBox's built-in DHCP to prepare for Windows Server DHCP
 
-**Phase 2: Domain Controller (DC1) Setup**
+**Phase 2: Domain Controller (DC826) Setup**
 
     - Created VM with 4GB RAM, 50GB Virtual Hard Disk
 
@@ -90,7 +90,7 @@ Documentation and configuration files for my Windows Server home lab running on 
 
     - Activated and authorized the scope
 
-**Phase 4: File Server (FS1) Setup**
+**Phase 4: File Server (FS1030) Setup**
 
     - Created second VM with 4GB RAM, 50GB Virtual Hard Disk
 
@@ -100,29 +100,34 @@ Documentation and configuration files for my Windows Server home lab running on 
 
     - Attempted to join domain homelab.local—encountered DNS resolution issues
 
-    - 
+    - Completed troubleshooting the DNS resolution issue which ended up being a simple NAT Network not connected on Virtualbox to the File Server, preventing access to the DNS server. 
 
 **Phase 5: Major Troubleshooting - DNS Connectivity**
 
-The Situation: After configuring DNS on DC1 and setting FS1's DNS to 10.0.1.10, I couldn't resolve domain names. Test-NetConnection showed port 53 was unreachable, and netstat revealed DNS wasn't bound to any IP address. I spent significant time troubleshooting:
+The Situation: After configuring DNS on DC826 and setting FS1030's DNS to 10.0.1.10, I couldn't resolve domain names. Test-NetConnection showed port 53 was unreachable, and netstat revealed DNS wasn't bound to any IP address. I spent significant time troubleshooting:
 
-    - DNS service status (sc query dns)
+    - DNS service status (Utilized command: sc query dnscache)
 
-    - Windows Firewall rules for port 53
+    - Windows Firewall rules for port 53 and enable inbound ICMPv4-IN rule
 
-    - DNS interface bindings in DNS Manager
+    - Verified DNS connection (Utilized command: Test-NetConnection 10.0.1.10 -Port 53) test failed
+
+    - DNS interface bindings in DNS Manager (Configured listening on the DNS server 10.0.1.10)
 
     - DNS server registration with ipconfig /registerdns
 
 **The Actual Problem**
-    - After an hour of deep-dive troubleshooting, I discovered the root cause was embarrassingly simple—FS1 wasn't connected to the correct NAT network in VirtualBox. The VM was completely isolated from DC1.
+
+    - After an hour of deep-dive troubleshooting, I discovered the root cause was embarrassingly simple—FS1030 wasn't connected to the correct NAT network in VirtualBox. The VM was completely isolated from DC826.
 
 **The Fix:**
 
-    - Shut down FS1
+    - Shut down FS1030
 
-    - VirtualBox → FS1 Settings → Network
+    - VirtualBox → FS1030 Settings → Network
 
     - Changed "Attached to" from incorrect setting to NAT Network named "ad_lab"
 
-    - Started FS1 - all connectivity worked immediately
+    - Started FS1030 - all connectivity worked immediately
+
+    - Verified through these two commands: ping 10.0.1.10 & nslookup homelab.local 10.0.1.10
