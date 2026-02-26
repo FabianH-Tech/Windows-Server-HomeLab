@@ -64,15 +64,15 @@ Documentation and configuration files for my Windows Server home lab running on 
 
 **Phase 2: Domain Controller (DC1) Setup**
 
-    - Created VM with 4GB RAM, 50GB dynamic disk
+    - Created VM with 4GB RAM, 50GB Virtual Hard Disk
 
     - Installed Windows Server 2025 (Desktop Experience)
 
-    - Configured static IP: 10.0.1.10/24 with gateway 10.0.1.1 and DNS 127.0.0.1
+    - Configured static IP: 10.0.1.10/24 with gateway 10.0.1.1 and DNS 10.0.1.10
 
-    - Installed AD DS, DNS, and DHCP roles via Server Manager
+    - Installed features: AD DS, DNS, and DHCP roles via Server Manager
 
-    - Promoted to domain controller with new forest homelab.local
+    - Promoted to domain controller with a new forest named homelab.local
 
     - Authorized DHCP server in AD
 
@@ -82,21 +82,25 @@ Documentation and configuration files for my Windows Server home lab running on 
 
     - Set scope options:
 
-    Router:(Defaul Gateway) 10.0.1.1
+        Scope excludes 10.0.1.1 - 10.0.1.99 for future server implementations
 
-    DNS Servers: 10.0.1.10
+        Router:(Defaul Gateway) 10.0.1.1
+
+        DNS Servers: 10.0.1.10
 
     - Activated and authorized the scope
 
 **Phase 4: File Server (FS1) Setup**
 
-    - Created second VM with 4GB RAM, 60GB dynamic disk
+    - Created second VM with 4GB RAM, 50GB Virtual Hard Disk
 
     - Installed Windows Server 2025 (Desktop Experience)
 
     - Configured static IP: 10.0.1.11/24 with gateway 10.0.1.1 and DNS 10.0.1.10
 
     - Attempted to join domain homelab.local—encountered DNS resolution issues
+
+    - 
 
 **Phase 5: Major Troubleshooting - DNS Connectivity**
 
