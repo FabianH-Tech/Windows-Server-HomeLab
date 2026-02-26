@@ -40,7 +40,7 @@ Documentation and configuration files for my Windows Server home lab running on 
 | **DHCP Lease** | 8 days |
 | **Gateway** | 10.0.1.1 (VirtualBox NAT) |
 
-Management Tools:
+**Management Tools:**
 
     - Server Manager
 
