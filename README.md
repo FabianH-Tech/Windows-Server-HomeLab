@@ -104,7 +104,7 @@ Documentation and configuration files for my Windows Server home lab running on 
 
 **Phase 5: Major Troubleshooting - DNS Connectivity**
 
-After configuring DNS on DC826 and setting FS1030's DNS to 10.0.1.10, I couldn't resolve domain names. Test-NetConnection showed port 53 was unreachable, and netstat revealed DNS wasn't bound to any IP address. I spent significant time troubleshooting:
+After configuring DNS on DC826 and setting FS1030's DNS to 10.0.1.10, I couldn't resolve domain names. Test-NetConnection showed port 53 was unreachable, and netstat revealed DNS wasn't bound to any IP address. I spent significant time troubleshooting, here are the steps I took:
 
     - DNS service status (Utilized command: sc query dnscache)
 
