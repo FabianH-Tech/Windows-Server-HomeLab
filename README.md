@@ -8,7 +8,8 @@ Documentation and configuration files for my Windows Server home lab running on 
 
 **The Tools**
 
-    Virtualization: Oracle VirtualBox
+    Virtualization: 
+    - Oracle VirtualBox
 
     Operating Systems:
 
