@@ -1,5 +1,5 @@
 # Network Topology
-[Lenovo-ThinkPad - Windows 11 Pro Host]
+|Lenovo-ThinkPad - Windows 11 Pro Host|
                 |
 [VirtualBox NAT Network: ad_lab - 10.0.1.0/24]
   |-[DC826 - 10.0.1.10] (Domain Controller, DNS, DHCP)
