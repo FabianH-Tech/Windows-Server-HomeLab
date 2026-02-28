@@ -120,6 +120,18 @@ Documentation and configuration files for my Windows Server home lab running on 
         + Public folder: Domain Users = Read & execute, Administrators = Full Control
         + Verified security groups exist before applying permissions
 
+**Phase 7: Group Policy Configuration**
+
+    - Created GPO: "Drive Mapping - Company Data"
+        + Linked to Employees OU
+        + Configured: User Configuration → Preferences → Drive Maps
+        + Mapped Z: drive to \\FS1030\Public
+    - Created GPO: "Remote Desktop Access"
+        + Linked to IT OU
+        + Enabled: Computer Configuration → Administrative Templates → Windows Components → Remote Desktop Services → Allow users to connect remotely
+    - Ran gpupdate /force on CLIENT01 to test
+    - Verified Z: drive appears for all domain users
+
 ## Troubleshooting Lessons, Fix and Key takeways:
 
 **Major Troubleshooting - DNS Connectivity**
