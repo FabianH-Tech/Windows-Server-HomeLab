@@ -109,6 +109,17 @@ Documentation and configuration files for my Windows Server home lab running on 
     - Created test users: c.rodriguez (IT), a.wloch (Sales), m.rodriguez (HR)
     - Added users to corresponding security groups
 
+**Phase 6: File Share Configuration**
+
+    - Created folder structure: C:\Shares\IT, Sales, HR, Public
+    - Share permissions (Network access): Domain Users = Modify, read & execute
+    - NTFS permissions (File-level access):
+        + IT folder: IT_Group = Modify, Administrators = Full Control
+        + Sales folder: Sales_Group = Modify, Administrators = Full Control
+        + HR folder: HR_Group = Modify, Administrators = Full Control
+        + Public folder: Domain Users = Read & execute, Administrators = Full Control
+        + Verified security groups exist before applying permissions
+
 ## Troubleshooting Lessons, Fix and Key takeways:
 
 **Major Troubleshooting - DNS Connectivity**
