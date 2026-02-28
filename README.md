@@ -102,7 +102,16 @@ Documentation and configuration files for my Windows Server home lab running on 
 
     - Completed troubleshooting the DNS resolution issue which ended up being a simple NAT Network not connected on Virtualbox to the File Server, preventing access to the DNS server. 
 
-**Phase 5: Major Troubleshooting - DNS Connectivity**
+**Phase 5: Active Directory Structure & Security Groups**
+
+    - Created Organizational Units: Groups, Computers, Servers
+    - Created security groups: IT_Group, Sales_Group, HR_Group
+    - Created test users: c.rodriguez (IT), a.wloch (Sales), m.rodriguez (HR)
+    - Added users to corresponding security groups
+
+## Troubleshooting Lessons, Fix and Key takeways:
+
+**Major Troubleshooting - DNS Connectivity**
 
 After configuring DNS on DC826 and setting FS1030's DNS to 10.0.1.10, I couldn't resolve domain names. Test-NetConnection showed port 53 was unreachable, and netstat revealed DNS wasn't bound to any IP address. I spent significant time troubleshooting, here are the steps I took:
 
