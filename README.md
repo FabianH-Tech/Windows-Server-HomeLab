@@ -105,31 +105,49 @@ Documentation and configuration files for my Windows Server home lab running on 
 **Phase 5: Active Directory Structure & Security Groups**
 
     - Created Organizational Units: Groups, Computers, Servers
+    
     - Created security groups: IT_Group, Sales_Group, HR_Group
+    
     - Created test users: c.rodriguez (IT), a.wloch (Sales), m.rodriguez (HR)
+    
     - Added users to corresponding security groups
 
 **Phase 6: File Share Configuration**
 
     - Created folder structure: C:\Shares\IT, Sales, HR, Public
+    
     - Share permissions (Network access): Domain Users = Modify, read & execute
+    
     - NTFS permissions (File-level access):
+        
         + IT folder: IT_Group = Modify, Administrators = Full Control
+    
         + Sales folder: Sales_Group = Modify, Administrators = Full Control
+        
         + HR folder: HR_Group = Modify, Administrators = Full Control
+        
         + Public folder: Domain Users = Read & execute, Administrators = Full Control
+        
         + Verified security groups exist before applying permissions
 
 **Phase 7: Group Policy Configuration**
 
     - Created GPO: "Drive Mapping - Company Data"
+        
         + Linked to Employees OU
+        
         + Configured: User Configuration → Preferences → Drive Maps
+        
         + Mapped Z: drive to \\FS1030\Public
+    
     - Created GPO: "Remote Desktop Access"
+        
         + Linked to IT OU
+        
         + Enabled: Computer Configuration → Administrative Templates → Windows Components → Remote Desktop Services → Allow users to connect remotely
+    
     - Ran gpupdate /force on CLIENT01 to test
+    
     - Verified Z: drive appears for all domain users
 
 ## Troubleshooting Lessons, Fix and Key takeways:
